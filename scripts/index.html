@@ -1,0 +1,57 @@
+<style>
+    @font-face {
+      font-family: 'Moonbase Alpha';
+      src: url('./src/Moonbase Alpha.otf') format('opentype');
+    }
+
+    #menu-container {
+      font-family: 'Moonbase Alpha', sans-serif;
+      font-size:40px;
+      position: absolute;
+      width: 25vw;
+      height: 25vh;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      cursor: grab;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="menu-container"></div>
+
+  <script>
+    const container = document.getElementById('menu-container');
+
+    // Load menu.html content
+    fetch('menu.html')
+      .then(response => response.text())
+      .then(html => {
+        container.innerHTML = html;
+      });
+
+    // Draggable functionality
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - container.offsetLeft;
+      offsetY = e.clientY - container.offsetTop;np
+      container.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        container.style.left = `${e.clientX - offsetX}px`;
+        container.style.top = `${e.clientY - offsetY}px`;
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.style.cursor = 'grab';
+    });
+  </script>
