@@ -26,13 +26,11 @@
       position: absolute;
       width: 25vw;
       height: 25vh;
-      font-size: 100px;
-      color: black;
+      font-size: 150px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 10px;
       cursor: grab;
       touch-action: none;
     }
