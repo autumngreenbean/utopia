@@ -15,28 +15,5 @@
   <div id="menu">uuutopiaaa!</div>
 
   <script>
-    const menu = document.getElementById('menu');
-
-    let offsetX = 0;
-    let offsetY = 0;
-    let isDragging = false;
-
-    menu.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      offsetX = e.clientX - menu.offsetLeft;
-      offsetY = e.clientY - menu.offsetTop;
-      menu.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        menu.style.left = `${e.clientX - offsetX}px`;
-        menu.style.top = `${e.clientY - offsetY}px`;
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      menu.style.cursor = 'grab';
-    });
+   
   </script>
