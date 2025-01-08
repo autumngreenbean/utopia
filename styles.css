@@ -1,0 +1,52 @@
+<style>
+    @font-face {
+      font-family: 'Moonbase Alpha';
+      src: url('./src/Moonbase Alpha.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'urban';
+      src: url('./src/FFF Urban Extended.ttf') format('truetype');
+    }
+
+    :root {
+      --menu1-text: 'uuutopiaaa';
+      --menu2-text: 'uuuuutopiaaaa';
+      --menu3-text: 'utopia';
+    }
+
+    .menu {
+      position: absolute;
+      width: 25vw;
+      height: 25vh;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 30px;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    #menu1::before {
+      font-family: 'Moonbase Alpha', sans-serif;
+      content: var(--menu1-text);
+      white-space: pre-wrap;
+    }
+
+    #menu2::before {
+      content: var(--menu2-text);
+      white-space: pre-wrap;
+    }
+
+    #menu3::before {
+      font-family: 'urban', sans-serif;
+      content: var(--menu3-text);
+      white-space: pre-wrap;
+    }
+  </style>
