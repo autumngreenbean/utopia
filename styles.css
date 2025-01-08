@@ -1,4 +1,4 @@
-<style>
+
     @font-face {
       font-family: 'Moonbase Alpha';
       src: url('./src/Moonbase Alpha.otf') format('opentype');
@@ -19,9 +19,6 @@
       position: absolute;
       width: 25vw;
       height: 25vh;
-      background: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
       font-size: 30px;
       color: black;
       display: flex;
@@ -35,6 +32,8 @@
 
     #menu1::before {
       font-family: 'Moonbase Alpha', sans-serif;
+      color:white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
       content: var(--menu1-text);
       white-space: pre-wrap;
     }
@@ -49,4 +48,3 @@
       content: var(--menu3-text);
       white-space: pre-wrap;
     }
-  </style>
