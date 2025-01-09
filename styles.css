@@ -33,12 +33,15 @@
       text-align: center;
       cursor: grab;
       touch-action: none;
+      text-shadow: 10px 2px 50px rgba(0, 0, 0, 0.627);
+
     }
 
     #menu1::before {
       font-family: 'Moonbase Alpha', sans-serif;
       color:white;
-      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+            text-shadow: 5px 2px 5px rgba(0, 0, 0, 0.267);
+
       content: var(--menu1-text);
       white-space: pre-wrap;
     }
@@ -53,7 +56,7 @@
     #menu3::before {
       font-family: 'urban', sans-serif;
       color:white;
-      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+      /* text-shadow: 2px 2px 2px rgba(0,0,0,0.1); */
       content: var(--menu3-text);
       white-space: pre-wrap;
     }
@@ -61,8 +64,59 @@
     #menu4::before {
         font-family: 'bick', sans-serif;
         color:white;
-        text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+        /* text-shadow: 2px 2px 2px rgba(0,0,0,0.1); */
         content: var(--menu4-text);
         white-space: pre-wrap;
+        animation: textShadowEffect 6s infinite;
+
       }
   
+      
+      @keyframes textShadowEffect {
+        0% {
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), -2px -2px 5px rgba(0, 0, 0, 0.4);
+        }
+        25% {
+          text-shadow: 4px 4px 50px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(0, 0, 0, 0.5);
+        }
+        50% {
+          text-shadow: 6px 6px 100px rgba(0, 0, 0, 0.6), -6px -6px 15px rgba(0, 0, 0, 0.6);
+        }
+        75% {
+          text-shadow: 4px 4px 50px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(0, 0, 0, 0.5);
+        }
+        100% {
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), -2px -2px 5px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      @keyframes textShadowEffect2 {
+        0% {
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), -2px -2px 5px rgba(0, 0, 0, 0.4);
+        }
+        25% {
+          text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(0, 0, 0, 0.5);
+        }
+        50% {
+          text-shadow: 6px 6px 15px rgba(0, 0, 0, 0.6), -6px -6px 15px rgba(0, 0, 0, 0.6);
+        }
+        75% {
+          text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(0, 0, 0, 0.5);
+        }
+        100% {
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4), -2px -2px 5px rgba(0, 0, 0, 0.4);
+        }
+      }
+      
+            
+      @keyframes roughEffect {
+        0% {
+          filter: contrast(100%) brightness(100%) grayscale(0);
+        }
+        50% {
+          filter: contrast(150%) brightness(120%) grayscale(50%);
+        }
+        100% {
+          filter: contrast(100%) brightness(100%) grayscale(0);
+        }
+      }
