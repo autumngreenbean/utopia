@@ -1,0 +1,74 @@
+
+    @font-face {
+      font-family: 'Moonbase Alpha';
+      src: url('./src/Moonbase Alpha.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'urban';
+      src: url('./src/FFF Urban Extended.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'bick';
+        src: url('./src/Bickham\ Script\ Std.ttf') format('truetype');
+      }
+
+    :root {
+      --menu1-text: 'uuutopiaaa';
+      --menu2-text: 'uuuuutopiaaaa';
+      --menu3-text: 'utopia';
+      --menu4-text: 'Utopia';
+
+    }
+
+    .menu {
+      position: absolute;
+      width: 25vw;
+      height: 25vh;
+      font-size: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    #menu1::before {
+      font-family: 'Moonbase Alpha', sans-serif;
+      color:white;
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+      content: var(--menu1-text);
+      white-space: pre-wrap;
+    }
+
+    #menu1:hover::before {
+      filter: blur(3px); 
+      transition: filter 0.3s ease; 
+    }
+    
+
+    #menu2::before {
+      content: var(--menu2-text);
+      color:white;
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
+    }
+
+    #menu3::before {
+      font-family: 'urban', sans-serif;
+      color:white;
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+      content: var(--menu3-text);
+      white-space: pre-wrap;
+    }
+
+    #menu4::before {
+        font-family: 'bick', sans-serif;
+        color:white;
+        text-shadow: 2px 2px 60px rgb(255, 21, 196);
+        content: var(--menu4-text);
+        white-space: pre-wrap;
+      }
+  
