@@ -1,0 +1,200 @@
+<style>
+    /* Style for the form container and its title bar */
+    #form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      resize: horizontal;
+    }
+
+    /* The top bar (window header) */
+    #form-header {
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* The minimize button */
+    #minimize-btn {
+      background-color: transparent;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+
+    /* The content section of the form */
+    #form-content {
+      padding: 20px;
+      display: block;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0px;
+      display: inline-block;
+    }
+
+    input[type="text"], input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: border-color 1s ease, box-shadow 1s ease;
+    }
+
+    button {
+      padding: 8px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 1px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+</style>
+
+<div id="form-container">
+    <div id="form-header">
+        <span id="form-title">Untitled by Unknown</span>
+        <button id="minimize-btn">-</button>
+    </div>
+    <div id="form-content">
+        <form id="data-form">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+            <br>
+
+            <label for="message">Text:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Dynamically update title based on input fields
+const titleInput = document.getElementById('title');
+const authorInput = document.getElementById('author');
+const formTitle = document.getElementById('form-title');
+
+// Function to update the title bar with the format "title by author"
+const updateTitle = () => {
+    const title = titleInput.value || 'Untitled';
+    const author = authorInput.value || 'Unknown';
+    formTitle.textContent = `${title} by ${author}`;
+};
+
+// Event listeners to update the title when the inputs change
+titleInput.addEventListener('input', updateTitle);
+authorInput.addEventListener('input', updateTitle);
+
+// Minimize button functionality
+const minimizeBtn = document.getElementById('minimize-btn');
+const formContent = document.getElementById('form-content');
+let isMinimized = false;
+
+minimizeBtn.addEventListener('click', () => {
+    isMinimized = !isMinimized;
+    formContent.style.display = isMinimized ? 'none' : 'block';
+});
+
+// Function to make the form draggable
+function makeDraggable(element, header) {
+    let offsetX = 0, offsetY = 0, startX = 0, startY = 0;
+
+    const startDrag = (e) => {
+        e.preventDefault();
+        startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        document.addEventListener(e.type.includes('mouse') ? 'mousemove' : 'touchmove', drag);
+        document.addEventListener(e.type.includes('mouse') ? 'mouseup' : 'touchend', stopDrag);
+    };
+
+    const drag = (e) => {
+        let clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        let clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+
+        offsetX = clientX - startX;
+        offsetY = clientY - startY;
+
+        startX = clientX;
+        startY = clientY;
+
+        element.style.top = `${element.offsetTop + offsetY}px`;
+        element.style.left = `${element.offsetLeft + offsetX}px`;
+    };
+
+    const stopDrag = (e) => {
+        document.removeEventListener(e.type.includes('mouse') ? 'mousemove' : 'touchmove', drag);
+        document.removeEventListener(e.type.includes('mouse') ? 'mouseup' : 'touchend', stopDrag);
+    };
+
+    header.addEventListener('mousedown', startDrag);
+    header.addEventListener('touchstart', startDrag, { passive: false });
+}
+
+// Make the form container draggable by the header
+makeDraggable(document.getElementById('form-container'), document.getElementById('form-header'));
+
+// Form submission logic using fetch
+const form = document.getElementById('data-form');
+
+form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Gather form data
+    const formData = new FormData(form);
+    const data = {
+        title: formData.get('title'),
+        author: formData.get('author'),
+        message: formData.get('message'),
+    };
+
+    try {
+        // Log the data being sent for debugging purposes
+        console.log('Sending data:', data);
+
+        const response = await fetch('https://script.google.com/macros/s/AKfycbw45dV1LFs9m8IkavrszfS30_90JGLrLHlgIz2j-2bLOP-MuPFBsJ8rhvR26rj7m9o1SA/exec', {
+            method: 'POST',
+            body: new URLSearchParams(data),
+        });
+
+        // Check if the response is ok (status code 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const result = await response.text();
+        console.log('Form submitted successfully:', result);
+        alert('Form submitted successfully!');
+        form.reset();
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was an error submitting the form. Please try again later.');
+    }
+});
+
+});
+</script>
