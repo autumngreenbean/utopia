@@ -1,0 +1,29 @@
+hello world!!
+
+
+<script type="module">
+        // Import both makeDraggable and form functions
+        import { makeDraggable } from './makeDraggable.js';
+        import { handleFormSubmit } from './submit.js';
+        import { initTitleUpdate, handleMinimize } from './window.js';
+
+        async function loadForm() {
+            const response = await fetch('form.html');
+            const formHTML = await response.text();
+
+            // Insert the form HTML into the body of test.html
+            document.body.innerHTML += formHTML;
+
+            // After the content is loaded, apply the draggable functionality
+            const formContainer = document.getElementById('form-container');
+            const formHeader = document.getElementById('form-header');
+
+            if (formContainer && formHeader) {
+            makeDraggable(formContainer, formHeader); // Make form draggable
+            handleFormSubmit();  // Initialize form submission handler
+            initTitleUpdate();   // Initialize title input listeners
+            handleMinimize();    // Initialize minimize button functionality
+        }
+        }
+        window.onload = loadForm;
+    </script>
