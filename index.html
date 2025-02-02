@@ -1,29 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UTOPIA</title>
-  <link rel="stylesheet" href="styles-demo.css">
 
-</head>
-<body>
-  <div id="menu1" class="menu" style="top: 10px; left: 10px;"></div>
-  <div id="menu2" class="menu" style="top: 200px; left: 300px;"></div>
-  <div id="menu3" class="menu" style="top: 300px; left: 100px;"></div>
-  <div id="menu4" class="menu" class="animated-text" style="top: 400px; left: 150px;"></div>
+<style>
+
+  @font-face {
+          font-family: 'bick';
+          src: url('./src/Bickham\ Script\ Std.ttf') format('truetype');
+        }
+  
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      
+      body {
+          height: 500vh; /* Allows the body to extend beyond the viewport */
+          overflow-y: scroll; /* Enable vertical scrolling */
+        }
+  
+  .ellipse {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the ellipse */
+    width: 98vw;
+    height: 98vh;
+    background-color: transparent;
+    border: 1px dotted white;
+    border-radius: 50%;  /* Ensures the shape is an ellipse */
+    box-shadow: 0 0 15px 5px rgb(255, 82, 169); /* Hot pink shadow */
+    z-index: -1;  /* Ensures it stays behind content */
+  }
+  
+  .box {
+    position: fixed;
+    /* top:0;
+    left:0; */
+    /* transform: translate (-25%,-25%); */
+    width:49vw;
+    height: 48.6vh;
+    background-color: transparent;
+    border: 1px dotted white;
+    box-shadow: 0 0 15px 5px rgb(255, 132, 194); /* Hot pink shadow */
+    z-index: -1;  /* Ensures it stays behind content */ 
+  }
+  
+  #top-left {
+        top: 1%;
+        right: 50%;
+      }
+  
+      #top-right {
+        top: 1%;
+        left: 50%;
+      }
+  
+      #bottom-left {
+  
+        bottom: 1%;
+        right: 50%;
+      }
+  
+      #bottom-right {
+        bottom: 1%;
+        left: 50%;
+      }
+  
+      #top-bend {
+        top: 1%;        /* Position it at the top of the screen */
+        left: 50%;      /* Center horizontally */
+        width: 98vw; 
+        height:49vh;
+        transform: translateX(-50%);
+      }
+      #bottom-bend {
+        bottom: 1%;
+        left: 50%;
+        width:98vw;
+        height:49vh;
+        transform: translate(-50%, 0%);
+      }
+  
+      #top {
+        top: 1%;        /* Position it at the top of the screen */
+        left: 50%;      /* Center horizontally */
+        width: 98vw; 
+        height:49vh;
+        transform: translateX(-50%);
+      }
+      #bottom {
+        bottom: 1%;
+        left: 50%;
+        width:98vw;
+        height:49vh;
+        transform: translate(-50%, 0%);
+      }
+    </style>
+  <div style="position: absolute; top: 50%; left: 50%; 
+              transform: translate(-50%, -55%); 
+              color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+              font-family: bick;
+              font-size:500px;">uuutopiaaa</div>
+ <br><br><br>
+<div style="position: absolute; top: 50%; left: 50%; 
+transform: translate(-50%, -60%); 
+color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+font-family: bick;
+font-size:100px;">uuutopiaaa</div>
 
 
-  <script src="./main.js"></script>
-  <script src="canvas.js" type="module" defer></script>
+<div style="position: relative; top: 50%; left: 50%; 
+transform: translate(-50%, -60%); 
+color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+font-family: bick;
+font-size:100px;">eleanor randl, <br> autumn jing, <br>simone badaruddin</div>
+  
+  <div class="box" id="top"></div>
+  <div class="box" id="bottom"></div>
+  
+  <div class="box" id="top-bend"></div>
+  <div class="box" id="bottom-bend"></div>
+    <div class="box" id="bottom-left"></div>
+  
+  
+    <div class="box" id="bottom-right"></div>
+    <div class="box" id="top-left"></div>
+    <div class="box" id="top-right"></div>
+    <div class="ellipse"></div>
+  
+    <script>
+window.addEventListener("scroll", () => {
+  let scrollFactor = window.scrollY / window.innerHeight;  // Normalize the scroll value
 
-  <script>
-    makeDraggable(document.getElementById('menu1'));
-    makeDraggable(document.getElementById('menu2'));
-    makeDraggable(document.getElementById('menu3'));
-    makeDraggable(document.getElementById('menu4'));
+  // Smooth the scroll factor to control the speed
+  let slowFactor = scrollFactor * 1; // Adjust multiplier for speed (lower for slower effect)
+  
+  // Apply phase-in/out effect using sine to oscillate back and forth
+  let borderRadius = (Math.sin(slowFactor * Math.PI) * 50) + "%"; // Smooth back-and-forth oscillation for the radius
 
+  // Apply border-radius to inward-facing edges of the bend boxes
+  document.querySelector("#top-left").style.borderTopRightRadius = borderRadius;
+  document.querySelector("#top-left").style.borderBottomRightRadius = borderRadius;
+
+  document.querySelector("#top-right").style.borderTopLeftRadius = borderRadius;
+  document.querySelector("#top-right").style.borderBottomLeftRadius = borderRadius;
+
+  document.querySelector("#bottom-left").style.borderTopRightRadius = borderRadius;
+  document.querySelector("#bottom-left").style.borderBottomRightRadius = borderRadius;
+
+  document.querySelector("#bottom-right").style.borderTopLeftRadius = borderRadius;
+  document.querySelector("#bottom-right").style.borderBottomLeftRadius = borderRadius;
+
+  document.querySelector("#top-bend").style.borderBottomLeftRadius = borderRadius;
+  document.querySelector("#top-bend").style.borderBottomRightRadius = borderRadius;
+
+  document.querySelector("#bottom-bend").style.borderTopLeftRadius = borderRadius;
+  document.querySelector("#bottom-bend").style.borderTopRightRadius = borderRadius;
+
+  // Shrink the ellipse width with phase-in/out effect
+  let newWidth = 100 - (scrollFactor * 50);
+  newWidth = 50 + (Math.sin(slowFactor * Math.PI) * 50);  // Smooth phase-in and phase-out effect
+
+  document.querySelector(".ellipse").style.width = newWidth + "vw";
+});
+
+
+   
   </script>
-
-</body>
-</html>
+  
