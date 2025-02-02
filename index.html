@@ -143,7 +143,7 @@ window.addEventListener("scroll", () => {
   let scrollFactor = window.scrollY / window.innerHeight;  // Normalize the scroll value
 
   // Smooth the scroll factor to control the speed
-  let slowFactor = scrollFactor * 1; // Adjust multiplier for speed (lower for slower effect)
+  let slowFactor = scrollFactor * .5; // Adjust multiplier for speed (lower for slower effect)
   
   // Apply phase-in/out effect using sine to oscillate back and forth
   let borderRadius = (Math.sin(slowFactor * Math.PI) * 50) + "%"; // Smooth back-and-forth oscillation for the radius
