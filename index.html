@@ -1,176 +1,178 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
-
-
-.ballet{
-  font-family: "Ballet", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
     
-        * {
-            margin: 0;
-            font-family: 'Ballet';
-            padding: 0;
-            box-sizing: border-box;
+    
+    .ballet{
+      font-family: "Ballet", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+        
+            * {
+                margin: 0;
+                font-family: 'Ballet';
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                height: 500vh; 
+                overflow-y: scroll;
+              }
+        
+        .ellipse {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); 
+          width: 100vw;
+          height: 98vh;
+          background-color: transparent;
+          border: 1px dotted white;
+          border-radius: 50%;  
+          box-shadow: 0 0 15px 5px rgb(255, 82, 169);
+          z-index: -1;  
         }
         
-        body {
-            height: 500vh; /* Allows the body to extend beyond the viewport */
-            overflow-y: scroll; /* Enable vertical scrolling */
-          }
-    
-    .ellipse {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Centers the ellipse */
-      width: 100vw;
-      height: 98vh;
-      background-color: transparent;
-      border: 1px dotted white;
-      border-radius: 50%;  /* Ensures the shape is an ellipse */
-      box-shadow: 0 0 15px 5px rgb(255, 82, 169); /* Hot pink shadow */
-      z-index: -1;  /* Ensures it stays behind content */
-    }
-    
-    .box {
-      position: fixed;
-      /* top:0;
-      left:0; */
-      /* transform: translate (-25%,-25%); */
-      width:49vw;
-      height: 48.6vh;
-      background-color: transparent;
-      border: 1px dotted white;
-      box-shadow: 0 0 15px 5px rgb(255, 132, 194); /* Hot pink shadow */
-      z-index: -1;  /* Ensures it stays behind content */ 
-    }
-    
-    #top-left {
-          top: 1%;
-          right: 50%;
+        .box {
+          position: fixed;
+          /* top:0;
+          left:0; */
+          /* transform: translate (-25%,-25%); */
+          width:49vw;
+          height: 48.6vh;
+          background-color: transparent;
+          border: 1px dotted white;
+          box-shadow: 0 0 15px 5px rgb(255, 132, 194); 
+          z-index: -1;  
         }
+        
+        #top-left {
+              top: 1%;
+              right: 50%;
+            }
+        
+            #top-right {
+              top: 1%;
+              left: 50%;
+            }
+        
+            #bottom-left {
+        
+              bottom: 1%;
+              right: 50%;
+            }
+        
+            #bottom-right {
+              bottom: 1%;
+              left: 50%;
+            }
+        
+            #top-bend {
+              top: 1%;       
+              left: 50%;      
+              width: 98vw; 
+              height:49vh;
+              transform: translateX(-50%);
+            }
+            #bottom-bend {
+              bottom: 1%;
+              left: 50%;
+              width:98vw;
+              height:49vh;
+              transform: translate(-50%, 0%);
+            }
+        
+            #top {
+              top: 1%;       
+              left: 50%;     
+              width: 98vw; 
+              height:49vh;
+              transform: translateX(-50%);
+            }
+            #bottom {
+              bottom: 1%;
+              left: 50%;
+              width:98vw;
+              height:49vh;
+              transform: translate(-50%, 0%);
+            }
+          </style>
+         
+        
+        <div class="box" id="top"></div>
+        <div class="box" id="bottom"></div>
+        
+        <div class="box" id="top-bend"></div>
+        <div class="box" id="bottom-bend"></div>
+          <div class="box" id="bottom-left"></div>
+        
+        
+          <div class="box" id="bottom-right"></div>
+          <div class="box" id="top-left"></div>
+          <div class="box" id="top-right"></div>
+          <div class="ellipse"></div>
+        <!-- big -->
+        <div id = "header" style="position: fixed; top: 50%; left: 50%; 
+                    transform: translate(-50%, -50%); 
+                    color: transparent; text-shadow: 0 0 10px rgb(255, 132, 194); 
+                    font-size:645px;
+                   ">Utopia</div> 
+       <br><br><br>
+      <!-- subheader -->
+      <div style="position: fixed; top: 50%; left: 50%; 
+      transform: translate(-40%, 30%); 
+      color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+      font-size:50px;">Wondering, Dreaming, Manifesting</div>
+      
+      <div style="position: fixed; top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+      font-size:100px;">Fall 2025</div>
+      
+      <div style="position: relative; top: 50%; left: 50%; 
+      transform: translate(-50%, -60%); 
+      color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
+      font-size:100px;
+      -webkit-text-stroke: 1px rgba(255, 132, 194, 0.322);">eleanor randl, <br> autumn jing, <br>simone badaruddin</div>
+          <script>
+     window.addEventListener("scroll", () => {
+        let scrollFactor = window.scrollY / window.innerHeight;  
+      
+      
+        let slowFactor = scrollFactor * 1; // Adjust multiplier for speed
+        
+        let borderRadius = (Math.sin(slowFactor * Math.PI) * 50) + "%"; // Smooth back-and-forth oscillation for the radius
+      
+        document.querySelector("#top-left").style.borderTopRightRadius = borderRadius;
+        // document.querySelector("#top-left").style.borderBottomRightRadius = borderRadius;
+      
+        document.querySelector("#top-right").style.borderTopLeftRadius = borderRadius;
+        // document.querySelector("#top-right").style.borderBottomLeftRadius = borderRadius;
+      
+        // document.querySelector("#bottom-left").style.borderTopRightRadius = borderRadius;
+        document.querySelector("#bottom-left").style.borderBottomRightRadius = borderRadius;
+      
+        // document.querySelector("#bottom-right").style.borderTopLeftRadius = borderRadius;
+        document.querySelector("#bottom-right").style.borderBottomLeftRadius = borderRadius;
+      
+        document.querySelector("#top-bend").style.borderBottomLeftRadius = borderRadius;
+        document.querySelector("#top-bend").style.borderBottomRightRadius = borderRadius;
+      
+        document.querySelector("#bottom-bend").style.borderTopLeftRadius = borderRadius;
+        document.querySelector("#bottom-bend").style.borderTopRightRadius = borderRadius;
+      
+        // Shrink the ellipse width with phase-in/out effect
+        let newWidth = 200 - (scrollFactor * 50);
+        newWidth = 100 + (Math.sin(slowFactor * Math.PI) * 50);  
+        document.querySelector(".ellipse").style.width = newWidth + "vw";
     
-        #top-right {
-          top: 1%;
-          left: 50%;
-        }
+        // Apply the text stroke effect for the header
+        let textStrokeWidth = Math.abs(Math.sin(slowFactor * Math.PI)) * 1; 
+        document.querySelector("#header").style.webkitTextStroke = `${textStrokeWidth}px white`;
+    });
     
-        #bottom-left {
-    
-          bottom: 1%;
-          right: 50%;
-        }
-    
-        #bottom-right {
-          bottom: 1%;
-          left: 50%;
-        }
-    
-        #top-bend {
-          top: 1%;        /* Position it at the top of the screen */
-          left: 50%;      /* Center horizontally */
-          width: 98vw; 
-          height:49vh;
-          transform: translateX(-50%);
-        }
-        #bottom-bend {
-          bottom: 1%;
-          left: 50%;
-          width:98vw;
-          height:49vh;
-          transform: translate(-50%, 0%);
-        }
-    
-        #top {
-          top: 1%;        /* Position it at the top of the screen */
-          left: 50%;      /* Center horizontally */
-          width: 98vw; 
-          height:49vh;
-          transform: translateX(-50%);
-        }
-        #bottom {
-          bottom: 1%;
-          left: 50%;
-          width:98vw;
-          height:49vh;
-          transform: translate(-50%, 0%);
-        }
-      </style>
-     <!-- big -->
-    <div style="position: fixed; top: 50%; left: 50%; 
-                transform: translate(-50%, -55%); 
-                color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
-                font-size:700px;">uuutopiaaa</div> 
-   <br><br><br>
-  <!-- subheader -->
-  <div style="position: fixed; top: 50%; left: 50%; 
-  transform: translate(35%, -100%); 
-  color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
-  font-size:150px;">uuutopiaaa</div>
-  
-  <div style="position: fixed; top: 50%; left: 50%; 
-  transform: translate(20%, 80%); 
-  color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
-  font-size:90px;">fall 2025</div>
-  
-  <div style="position: relative; top: 50%; left: 50%; 
-  transform: translate(-50%, -60%); 
-  color: white; text-shadow: 0 0 10px rgb(255, 132, 194); 
-  font-size:100px;">eleanor randl, <br> autumn jing, <br>simone badaruddin</div>
-    
-    <div class="box" id="top"></div>
-    <div class="box" id="bottom"></div>
-    
-    <div class="box" id="top-bend"></div>
-    <div class="box" id="bottom-bend"></div>
-      <div class="box" id="bottom-left"></div>
-    
-    
-      <div class="box" id="bottom-right"></div>
-      <div class="box" id="top-left"></div>
-      <div class="box" id="top-right"></div>
-      <div class="ellipse"></div>
-    
-      <script>
-  window.addEventListener("scroll", () => {
-    let scrollFactor = window.scrollY / window.innerHeight;  // Normalize the scroll value
-  
-    // Smooth the scroll factor to control the speed
-    let slowFactor = scrollFactor * 1; // Adjust multiplier for speed (lower for slower effect)
-    
-    // Apply phase-in/out effect using sine to oscillate back and forth
-    let borderRadius = (Math.sin(slowFactor * Math.PI) * 50) + "%"; // Smooth back-and-forth oscillation for the radius
-  
-    // Apply border-radius to inward-facing edges of the bend boxes
-    document.querySelector("#top-left").style.borderTopRightRadius = borderRadius;
-    // document.querySelector("#top-left").style.borderBottomRightRadius = borderRadius;
-  
-    document.querySelector("#top-right").style.borderTopLeftRadius = borderRadius;
-    // document.querySelector("#top-right").style.borderBottomLeftRadius = borderRadius;
-  
-    // document.querySelector("#bottom-left").style.borderTopRightRadius = borderRadius;
-    document.querySelector("#bottom-left").style.borderBottomRightRadius = borderRadius;
-  
-    // document.querySelector("#bottom-right").style.borderTopLeftRadius = borderRadius;
-    document.querySelector("#bottom-right").style.borderBottomLeftRadius = borderRadius;
-  
-    document.querySelector("#top-bend").style.borderBottomLeftRadius = borderRadius;
-    document.querySelector("#top-bend").style.borderBottomRightRadius = borderRadius;
-  
-    document.querySelector("#bottom-bend").style.borderTopLeftRadius = borderRadius;
-    document.querySelector("#bottom-bend").style.borderTopRightRadius = borderRadius;
-  
-    // Shrink the ellipse width with phase-in/out effect
-    let newWidth = 200 - (scrollFactor * 50);
-    newWidth = 100 + (Math.sin(slowFactor * Math.PI) * 50);  // Smooth phase-in and phase-out effect
-  
-    document.querySelector(".ellipse").style.width = newWidth + "vw";
-  });
-  
-  
-     
-    </script>
+         
+        </script>
     
