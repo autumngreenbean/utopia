@@ -107,15 +107,6 @@ var material = new THREE.MeshBasicMaterial({
   wireframeLinewidth: 1 
 });
 
-// FOR REFLECTION 
-// var material = new THREE.MeshBasicMaterial({
-//   color: (0x000000),
-//   wireframe: false,
-//   dithering: true,
-//   wireframeLinewidth: 1 
-// });
-
-
 let shape1 = new THREE.Mesh(new THREE.WireframeGeometry(shapeGeometries[0]), material);
 let shape2 = new THREE.Mesh(new THREE.WireframeGeometry(shapeGeometries[0]), material);
 shape2.position.setX(1);
