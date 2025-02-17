@@ -13,7 +13,7 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 // Load GLB model
-new GLTFLoader().load('model.glb', gltf => {
+new GLTFLoader().load('4 site.glb', gltf => {
     const model = gltf.scene;
     model.scale.set(2, 2, 2);  
     model.position.set(0, 0, 0); 
