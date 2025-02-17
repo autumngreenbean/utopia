@@ -5,6 +5,7 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/
 const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas'), antialias: true });
 renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0xFFFFFF, 1);  // Set the background to white (or any color you prefer)
 document.body.appendChild(renderer.domElement);
 
 // Lighting
