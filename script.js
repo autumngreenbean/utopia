@@ -15,7 +15,7 @@ scene.add(light);
 // Load GLB model
 new GLTFLoader().load('4 site.glb', gltf => {
     const model = gltf.scene;
-    model.scale.set(10, 10, 10);  
+    model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
     model.rotateX(Math.PI / 7);
     scene.add(model);
@@ -31,4 +31,6 @@ camera.lookAt(0, 0, 0);
 (function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+    model.rotation.x += 0.01;  // Adjust the value for speed
+
 })();
