@@ -16,13 +16,20 @@ scene.add(light);
 let model; 
 new GLTFLoader().load('scene.gltf', gltf => {
     model = gltf.scene;
+
+    // Set scale, position, and rotation for the model
     model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
     model.rotateX(Math.PI / 7);
-    scene.add(model);
 
-    sphere.position.set(100, 0, 0); 
-    scene.add(sphere);
+    // Traverse through all the meshes in the model and set wireframe
+    model.traverse(child => {
+        if (child.isMesh) {
+            child.material.wireframe = true; // Enable wireframe for each mesh
+        }
+    });
+
+    scene.add(model);
 });
 
 // Camera setup
