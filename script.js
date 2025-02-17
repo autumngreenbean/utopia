@@ -12,10 +12,10 @@ document.body.appendChild(renderer.domElement);
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 5, 5);
 scene.add(light);
-let model;
 // Load GLB model
+let model; 
 new GLTFLoader().load('4 site.glb', gltf => {
-    const model = gltf.scene;
+    model = gltf.scene;
     model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
     model.rotateX(Math.PI / 7);
