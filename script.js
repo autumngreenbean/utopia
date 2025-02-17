@@ -20,10 +20,7 @@ new GLTFLoader().load('4 site.glb', gltf => {
     model.rotateX(Math.PI / 7);
     scene.add(model);
 
-    const sphereGeometry = new THREE.SphereGeometry(1, 16, 16); // Adjust size if needed
-    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Red sphere
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    sphere.position.set(100, 0, 0); // 100 units away on the X-axis
+    sphere.position.set(100, 0, 0); 
     scene.add(sphere);
 });
 
