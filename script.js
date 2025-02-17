@@ -11,7 +11,7 @@ document.body.appendChild(renderer.domElement);
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 5, 5);
 scene.add(light);
-
+let model;
 // Load GLB model
 new GLTFLoader().load('4 site.glb', gltf => {
     const model = gltf.scene;
