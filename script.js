@@ -17,20 +17,27 @@ let model;
 new GLTFLoader().load('scene.gltf', gltf => {
     model = gltf.scene;
 
-    // Set scale, position, and rotation for the model
     model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
     model.rotateX(Math.PI / 7);
-    
-    // Traverse through all the meshes in the model and set wireframe
+
     model.traverse(child => {
         if (child.isMesh) {
-            child.material.wireframe = true; // Enable wireframe for each mesh
+            const wireframeGeometry = new THREE.WireframeGeometry(child.geometry);
+            const wireframeMaterial = new THREE.LineBasicMaterial({
+                color: new THREE.Color(0xF0A6CA),
+                linewidth: 1
+            });
+
+            const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+            child.add(wireframe);
+            child.material = new THREE.MeshBasicMaterial({ wireframe: true, opacity: 0 });
         }
     });
 
     scene.add(model);
 });
+
 
 // Camera setup
 camera.position.set(0, 1, 150); // Move camera back to see both objects
