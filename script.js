@@ -21,7 +21,7 @@ new GLTFLoader().load('scene.gltf', gltf => {
     model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
     model.rotateX(Math.PI / 7);
-
+    
     // Traverse through all the meshes in the model and set wireframe
     model.traverse(child => {
         if (child.isMesh) {
@@ -39,6 +39,6 @@ camera.lookAt(0, 0, 0);
 (function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    model.rotation.x += 0.01;  // Adjust the value for speed
+    model.rotation.z += 0.01;  // Adjust the value for speed
 
 })();
