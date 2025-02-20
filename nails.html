@@ -1,0 +1,140 @@
+<script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    
+    const renderer = new THREE.WebGLRenderer();
+    document.body.appendChild(renderer.domElement);
+    
+    // Set the renderer size
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0xeeeeee, 1); // Set a light background color
+    
+    // Plane
+    const planeGeometry = new THREE.PlaneGeometry(200, 200);
+    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -0.1;
+    // Create the edges of the plane
+const edgesGeometry = new THREE.EdgesGeometry(planeGeometry);
+const edgesMaterial = new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 1 });
+const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+plane.add(edges);
+
+    scene.add(plane);
+    
+    // Sphere
+    const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+    const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.set(0, 1, 100);  // Set initial height of the sphere
+    scene.add(sphere);
+    
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0x404040, 1); // Soft white light
+    scene.add(ambientLight);
+    
+    const pointLight = new THREE.PointLight(0xffffff, 1, 500);
+    pointLight.position.set(10, 10, 10); // Position the light in the scene
+    scene.add(pointLight);
+
+    // Mouse interaction
+    let isDragging = false;
+    let mouse = new THREE.Vector2();
+    let intersectedObject = null;
+    let initialHeight = 1; // Initial height of the sphere
+    
+    const raycaster = new THREE.Raycaster();
+    
+    let targetPosition = new THREE.Vector3();  // Store the target position for the sphere
+let lifted = false;  // To track whether the sphere is lifted
+
+// Modify onMouseDown to lift the sphere
+function onMouseDown(event) {
+  event.preventDefault();
+
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObject(plane);
+  if (intersects.length > 0) {
+    isDragging = true;
+    intersectedObject = sphere;
+
+    // Lift the sphere when clicked
+    intersectedObject.position.y = 2; // Lift the sphere by 1 unit
+    lifted = true;
+  }
+}
+
+// Modify onMouseMove to use lerping and smooth dragging
+function onMouseMove(event) {
+  if (isDragging) {
+    event.preventDefault();
+
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(plane);
+
+    if (intersects.length > 0) {
+      // Get the target point and smooth the movement
+      targetPosition.copy(intersects[0].point);
+      targetPosition.y = 2; // Keep the sphere lifted during dragging
+    }
+  }
+}
+
+// Modify onMouseUp to drop the sphere
+function onMouseUp() {
+  if (isDragging) {
+    // Drop the sphere when released
+    if (lifted) {
+      intersectedObject.position.y = 1; // Return the sphere to its original height (on the plane)
+      lifted = false;
+    }
+  }
+
+  isDragging = false;
+  intersectedObject = null;
+}
+
+
+    
+    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    
+    // Camera position
+// Camera position (slightly top-down and tilted)
+camera.position.set(0, 100, 120);  // Position the camera (higher up)
+camera.rotation.x = Math.PI / 180 * -50;  // Rotate the camera by 10 degrees
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+    
+// Update sphere position smoothly in the animation loop
+function animate() {
+  requestAnimationFrame(animate);
+
+  if (sphere.position.distanceTo(targetPosition) > 0.01) {  // Only update if there's a noticeable distance
+    // Smoothly move the sphere toward the target position
+    sphere.position.lerp(targetPosition, 0.1);  // 0.1 is the lerp factor (smoothness)
+  }
+
+  renderer.render(scene, camera);
+}
+
+    
+    animate();
+    </script>
+    
