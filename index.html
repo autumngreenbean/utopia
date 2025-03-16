@@ -146,18 +146,14 @@
       
         let slowFactor = scrollFactor * 1; // Adjust multiplier for speed
         
-        let borderRadius = (Math.sin(slowFactor * Math.PI) * 50) + "%"; // Smooth back-and-forth oscillation for the radius
+        let borderRadius = (Math.sin(slowFactor * Math.PI) * 60)  + "%"; // Smooth back-and-forth oscillation for the radius
       
         document.querySelector("#top-left").style.borderTopRightRadius = borderRadius;
-        // document.querySelector("#top-left").style.borderBottomRightRadius = borderRadius;
       
         document.querySelector("#top-right").style.borderTopLeftRadius = borderRadius;
-        // document.querySelector("#top-right").style.borderBottomLeftRadius = borderRadius;
       
-        // document.querySelector("#bottom-left").style.borderTopRightRadius = borderRadius;
         document.querySelector("#bottom-left").style.borderBottomRightRadius = borderRadius;
       
-        // document.querySelector("#bottom-right").style.borderTopLeftRadius = borderRadius;
         document.querySelector("#bottom-right").style.borderBottomLeftRadius = borderRadius;
       
         document.querySelector("#top-bend").style.borderBottomLeftRadius = borderRadius;
@@ -166,12 +162,10 @@
         document.querySelector("#bottom-bend").style.borderTopLeftRadius = borderRadius;
         document.querySelector("#bottom-bend").style.borderTopRightRadius = borderRadius;
       
-        // Shrink the ellipse width with phase-in/out effect
         let newWidth = 200 - (scrollFactor * 50);
         newWidth = 100 + (Math.sin(slowFactor * Math.PI) * 50);  
         document.querySelector(".ellipse").style.width = newWidth + "vw";
     
-        // Apply the text stroke effect for the header
         let textStrokeWidth = Math.abs(Math.sin(slowFactor * Math.PI)) * 1; 
         document.querySelector("#header").style.webkitTextStroke = `${textStrokeWidth}px white`;
     });
