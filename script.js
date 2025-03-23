@@ -13,11 +13,21 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 let model; 
+<<<<<<< Updated upstream
 new GLTFLoader().load('nail_charms_XD/scene.gltf', gltf => {
     model = gltf.scene;
 
     model.scale.set(30, 30, 30);  
     model.position.set(0, 0, 0); 
+=======
+new GLTFLoader().load('/assets/star.glb', gltf => {
+    model = gltf.scene;
+
+    // Set scale, position, and rotation for the model
+    model.scale.set(4, 4, 4);  
+    model.position.set(0, 0, 0); 
+    // model.rotateX(Math.PI / 7);
+>>>>>>> Stashed changes
     
     // model.rotateX(Math.PI / 7);
         model.traverse(child => {
@@ -35,5 +45,6 @@ camera.lookAt(0, 0, 0);
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     // model.rotation.z += 0.01; 
+
 
 })();

@@ -1,0 +1,143 @@
+<style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .container {
+        padding: 20px;
+        display: block;
+        height: 500px;
+        width: 500px;
+        border-style: solid black;
+        border-width: 1px;
+        /* background-color: red; */
+        overflow-y: auto;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .post {
+        /* background-color: blue; */
+        border-style: 1px solid black;
+        margin-bottom: 3px;
+    }
+
+</style>
+
+<div class="container" id="posts-container">
+    <strong>general chatroom</strong>
+</div>
+<form id="form-content">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+    
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required><br><br>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea><br><br>
+    
+    <button type="submit" onclick="handleFormSubmit()">Submit</button>
+</form>
+
+<script>
+loadContent();
+
+const postsContainer = document.getElementById('posts-container');
+const loadingMessage = document.createElement('div');
+loadingMessage.classList.add('loading-message');
+loadingMessage.textContent = 'Loading data...';
+postsContainer.appendChild(loadingMessage);
+
+function loadContent() {
+
+console.log("blog.js: 'I am called!'");
+
+
+
+fetch('https://script.google.com/macros/s/AKfycbyE6c7WaemKoaRX83-g0aW6pME6wntY0BHXyG_yGtbSg4Z1dtrdnox9AqCD0sopVqiTUw/exec')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();  // Parse JSON data
+  })
+  .then(posts => {
+    console.log('Fetched posts:', posts);
+    
+    postsContainer.removeChild(loadingMessage);
+
+    posts.forEach(post => {
+      const title = post.title;
+      const content = post.content;
+      const author = post.author;
+
+
+
+      const postElement = document.createElement('div');
+      postElement.classList.add('post');
+
+      postElement.innerHTML = `
+        '<strong>${title}</strong>' by ${author}: 
+        <span style="color:gray;">${content} </span><br>
+      `;
+      
+      postsContainer.appendChild(postElement);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    loadingMessage.textContent = 'Failed to load data. Please try again later.';
+  });
+
+}
+
+function handleFormSubmit() {
+    document.getElementById('form-content').addEventListener('submit', async function (e) {
+        e.preventDefault(); 
+
+        const formData = new FormData(this);
+        const data = {
+            title: formData.get('title'),
+            author: formData.get('author'),
+            message: formData.get('message')
+        };
+
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzxt4Q4H-k1w2qhYAf0nbk9LJbQwx51pVGWbVrtpEacqonuIJdl139N_Ey-hauacgpwoQ/exec', {  // Replace with your deployed URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(data),
+            });
+
+            if (response.ok) {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+
+                postElement.innerHTML = `
+                    <strong>${data.title}</strong> by ${data.author}: 
+                    <span style="color:gray;">${data.message}</span><br>
+                `;
+
+                const postsContainer = document.getElementById('posts-container');
+                if (postsContainer) {
+                    postsContainer.appendChild(postElement);
+                } else {
+                    console.error('Error: #posts-container not found in the document.');
+                }
+                this.reset();
+                alert('Form submitted successfully!');
+            } else {
+                alert('Error submitting form!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an error with the submission.');
+        }
+    });
+}
+
+
+
+</script>
