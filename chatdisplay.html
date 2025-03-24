@@ -1,3 +1,6 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
@@ -19,7 +22,7 @@
         top:100px;
         padding: 20px;
         height: 160px;
-        width: 500px;
+        width: 80%;
         border-style: solid black;
         border-width: 1px;
         /* background-color: red; */
@@ -39,23 +42,29 @@
 
 
 <style>
-    #form-content {
+#form-content {
+    border-style: 1px solid black;
+
     color: black;
     position: absolute;
-    bottom:0;
-    left: 100px;
-    width: 500px;
-    height: 300px;
-    padding: 20px;
-  align-items: center;
-  justify-content: center;
-        font-size: 15px;
-
+    bottom: 200px;
+    margin-right: 55px;
+    width: 700px;
+    height: 150px;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 #form-content label {
+    justify-content: right;
+    display: flex;
+    align-items: center;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-right: 5px;
+    /* margin-bottom: 5px; */
+    width: 100%;
 }
 
 input:focus, 
@@ -66,23 +75,16 @@ button:focus {
 }
 #form-content input, 
 #form-content textarea {
-    padding: 20px;
-    margin: 10px;
     font-size: 14px;
-    width: 75%;
-    height: 20px;
-
-  /* -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
--moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
-box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
-border-style:none; */
+    width: 150px;
+    height: 25px;
+    margin-bottom: 3px;
 }
 
-#form-content textarea {
-    height: 20px;
-    resize: none;
-    width: 75%;
-  
+#form-content div {
+    display: flex;
+    align-items: right;
+    justify-content: right;
 }
 
 #form-content button {
@@ -95,13 +97,14 @@ border-style:none; */
     width: 150px;
     align-items: center;
     justify-content: center;
+    margin-top: 15px;
 }
 
 #form-content button:hover {
     text-shadow: 1px 1px 3px white;
     background-color: rgb(228, 228, 228);
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     color: transparent;
     font-family: ballet;
     cursor: pointer;
@@ -122,37 +125,45 @@ textarea:-webkit-autofill {
 }
 
 #chatroom-container {
-    box-sizing: border-box;
     display: flex;
-    justify-content: center; /* Centers child divs horizontally */
-    flex-direction: column; /* Stack children vertically (optional) */
-    width: 50%; /* Ensure full width */
-    height: 98vh; /* Optional: Full viewport height */
+    justify-content: center; 
+    width: 100vw; 
+    height: 98vh;
     border: 1px solid black;
 }
 
 </style>
 
+</head>
+
+<html>
 <span style="font-size: 50px; position: fixed; top: 10; left: 20;">general chatroom</span>
 <div id="chatroom-container">
-    <div class="container" id="posts-container">
-        
-    </div>
+    <div class="container" id="posts-container"></div>
     <form id="form-content">
-        <label for="title">title:</label>
-        <input type="text" id="title" name="title" ><br><br>
-        
-        <label for="author" required autocomplete="off">my name:</label>
-        <input type="text" id="author" name="author"><br><br>
-        
-        <label for="message">message:</label>
-        <input type="text" id="message" name="message"><br><br>
-        
-        <button type="submit" onclick="handleFormSubmit()">Submit</button>
+        <div>
+            <label for="title">title:</label>
+            <input type="text" id="title" name="title" >
+
+        </div>
+            <div>
+                <label for="author" required autocomplete="off">my name:</label>
+                <input type="text" id="author" name="author">
+            </div>
+        <div>
+            <label for="message">message:</label>
+            <input type="text" id="message" name="message" style="width: 350px;">
+    
+
+        </div>        
+        <div>
+            <button type="submit" onclick="handleFormSubmit()">Submit</button>
+
+        </div>
     </form>
 </div>
 
-
+</html>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
