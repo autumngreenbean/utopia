@@ -1,12 +1,24 @@
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
+    
+    
+    .ballet{
+      font-family: "Ballet", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
     * {
         font-family: Arial, Helvetica, sans-serif;
-        
+        overflow-y: hidden;
     }
     .container {
+        border: 1px solid black;
+        margin-left: 100px;
+        top:100px;
         padding: 20px;
-        display: block;
-        /* height: 500px; */
+        height: 160px;
         width: 500px;
         border-style: solid black;
         border-width: 1px;
@@ -14,6 +26,7 @@
         overflow-y: auto;
         justify-content: left;
         align-items: center;
+        position:absolute;
     }
 
     .post {
@@ -27,23 +40,17 @@
 
 <style>
     #form-content {
+    color: black;
     position: absolute;
     bottom:0;
+    left: 100px;
     width: 500px;
-    height: 400px;
-        padding: 20px;
-    background-color:rgba(228,228,228,1);
+    height: 300px;
+    padding: 20px;
   align-items: center;
   justify-content: center;
-  color: transparent;
-  text-shadow: 1px 1px 2px white;
-        font-size: 20px;
-  border-radius: 15px;
-  -webkit-box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  transition: all 0.2s ease-in-out;
-  margin: 25px;
+        font-size: 15px;
+
 }
 
 #form-content label {
@@ -60,33 +67,32 @@ button:focus {
 #form-content input, 
 #form-content textarea {
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
     margin: 10px;
     font-size: 14px;
-    width: 100%;
-    height: 30px;
+    width: 75%;
+    height: 20px;
 
-  -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+  /* -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
 -moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
 box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
-border-style:none;
+border-style:none; */
 }
 
 #form-content textarea {
-    height: 50px;
-    resize: vertical;
-
-  -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
--moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
-box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
-    border-style: none;
+    height: 20px;
+    resize: none;
+    width: 75%;
+  
 }
 
 #form-content button {
+    border: 1px solid black;
+
+    bottom:0;
+    right: 100px;
     height: 50px;
     width: 150px;
-    background-color:rgba(228,228,228,1);
+    /* background-color:rgba(228,228,228,1); */
   align-items: center;
   justify-content: center;
   color: transparent;
@@ -94,11 +100,7 @@ box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1p
   border-style: none;
 border-width: none;
   border-radius: 50px;
-  -webkit-box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  -moz-box-shadow: 0px 0px 10px 3px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
-  transition: all 0.2s ease-in-out;
-  margin: 25px;
+
 }
 
 #form-content button:hover {
@@ -142,28 +144,40 @@ input:-webkit-autofill,
 textarea:-webkit-autofill {
     background-color: transparent !important;
     color: inherit !important;
-    box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+#chatroom-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Centers child divs horizontally */
+    flex-direction: column; /* Stack children vertically (optional) */
+    width: 50%; /* Ensure full width */
+    height: 98vh; /* Optional: Full viewport height */
+    border: 1px solid black;
 }
 
 </style>
 
-
-
-<div class="container" id="posts-container">
-    <strong>general chatroom</strong>
+<span style="font-size: 50px; position: fixed; top: 10; left: 20;">general chatroom</span>
+<div id="chatroom-container">
+    <div class="container" id="posts-container">
+        
+    </div>
+    <form id="form-content">
+        <label for="title">title:</label>
+        <input type="text" id="title" name="title" ><br><br>
+        
+        <label for="author" required autocomplete="off">my name:</label>
+        <input type="text" id="author" name="author"><br><br>
+        
+        <label for="message">message:</label>
+        <input type="text" id="message" name="messafe"><br><br>
+        
+        <button type="submit" onclick="handleFormSubmit()">Submit</button>
+    </form>
 </div>
-<form id="form-content">
-    <label for="title">title:</label>
-    <input type="text" id="title" name="title" ><br><br>
-    
-    <label for="author" required autocomplete="off">my name:</label>
-    <input type="text" id="author" name="author"><br><br>
-    
-    <label for="message">message:</label>
-    <textarea id="message" name="message"></textarea><br><br>
-    
-    <button type="submit" onclick="handleFormSubmit()">Submit</button>
-</form>
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -186,6 +200,10 @@ buttons.forEach(function(button) {
   });
 });
 
+function scrollToBottom() {
+    let element = document.getElementById("posts-container");
+    element.scrollTop = element.scrollHeight;
+}
 
 
 loadContent();
@@ -213,7 +231,6 @@ fetch('https://script.google.com/macros/s/AKfycbyE6c7WaemKoaRX83-g0aW6pME6wntY0B
     console.log('Fetched posts:', posts);
     
     postsContainer.removeChild(loadingMessage);
-
     posts.forEach(post => {
       const title = post.title;
       const content = post.content;
@@ -231,6 +248,8 @@ fetch('https://script.google.com/macros/s/AKfycbyE6c7WaemKoaRX83-g0aW6pME6wntY0B
       
       postsContainer.appendChild(postElement);
     });
+    scrollToBottom();
+
   })
   .catch(error => {
     console.error('Error fetching data:', error);
@@ -276,6 +295,8 @@ function handleFormSubmit() {
                 }
                 this.reset();
                 alert('Form submitted successfully!');
+                scrollToBottom();
+
             } else {
                 alert('Error submitting form!');
             }
