@@ -1,11 +1,12 @@
 <style>
     * {
         font-family: Arial, Helvetica, sans-serif;
+        
     }
     .container {
         padding: 20px;
         display: block;
-        height: 500px;
+        /* height: 500px; */
         width: 500px;
         border-style: solid black;
         border-width: 1px;
@@ -23,23 +24,170 @@
 
 </style>
 
+
+<style>
+    #form-content {
+    position: absolute;
+    bottom:0;
+    width: 500px;
+    height: 400px;
+        padding: 20px;
+    background-color:rgba(228,228,228,1);
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  text-shadow: 1px 1px 2px white;
+        font-size: 20px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  transition: all 0.2s ease-in-out;
+  margin: 25px;
+}
+
+#form-content label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input:focus, 
+textarea:focus, 
+button:focus {
+    outline: none;
+    box-shadow: none; /* Optional: Removes any extra shadows */
+}
+#form-content input, 
+#form-content textarea {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    margin: 10px;
+    font-size: 14px;
+    width: 100%;
+    height: 30px;
+
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+-moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
+border-style:none;
+}
+
+#form-content textarea {
+    height: 50px;
+    resize: vertical;
+
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+-moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
+    border-style: none;
+}
+
+#form-content button {
+    height: 50px;
+    width: 150px;
+    background-color:rgba(228,228,228,1);
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  text-shadow: 1px 1px 3px white;
+  border-style: none;
+border-width: none;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  box-shadow: 0px 0px 10px 4px rgba(245, 245, 245, 1), 4px 6px 15px 4px rgba(148, 148, 148, 1), -5px -6px 15px 3px rgba(228, 228, 228, 1);
+  transition: all 0.2s ease-in-out;
+  margin: 25px;
+}
+
+#form-content button:hover {
+    text-shadow: 1px 1px 3px white;
+        background-color: rgb(228, 228, 228);
+        align-items: center;
+        justify-content: center;
+        color: transparent;
+        text-shadow: 
+        2px 20px 4px rgba(185, 185, 185, 0.7), 
+        -2px -2px 4px rgb(174, 174, 174); 
+        cursor: pointer;
+        display: flex;
+
+        /* border-radius: 15px; */
+        transition: all 0.2s ease-in-out;
+        line-height:20px;
+}
+
+#form-content button.clicked {
+    height: 50px;
+    width: 150px;
+    background-color:rgba(228,228,228,1);
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  text-shadow: 1px 1px 3px white;
+  border-style: none;
+border-width: none;
+  border-radius: 50px;
+  margin: 25px;
+
+  text-shadow: 1px 1px 2px white;
+
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+-moz-box-shadow: 0px 0px 3px 1px rgba(245, 245, 245, 1), -2px -3px 5px 1px rgba(148, 148, 148, 1), 3px 3px 5px 1px rgba(228, 228, 228, 1);
+box-shadow: inset 0px 0px 3px 1px rgba(245, 245, 245, 1), inset -2px -3px 5px 1px rgba(148, 148, 148, 1), inset 3px 3px 5px 1px rgba(228, 228, 228, 1);
+
+}
+input:-webkit-autofill, 
+textarea:-webkit-autofill {
+    background-color: transparent !important;
+    color: inherit !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+</style>
+
+
+
 <div class="container" id="posts-container">
     <strong>general chatroom</strong>
 </div>
 <form id="form-content">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required><br><br>
+    <label for="title">title:</label>
+    <input type="text" id="title" name="title" ><br><br>
     
-    <label for="author">Author:</label>
-    <input type="text" id="author" name="author" required><br><br>
+    <label for="author" required autocomplete="off">my name:</label>
+    <input type="text" id="author" name="author"><br><br>
     
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea><br><br>
+    <label for="message">message:</label>
+    <textarea id="message" name="message"></textarea><br><br>
     
     <button type="submit" onclick="handleFormSubmit()">Submit</button>
 </form>
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("title").setAttribute("autocomplete", "off");
+    document.getElementById("author").setAttribute("autocomplete", "off");
+    document.getElementById("message").setAttribute("autocomplete", "off");
+});
+
+
+const buttons = document.querySelectorAll('button'); // Select all buttons
+
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    button.classList.add('clicked'); // Add 'clicked' class
+    welcome(); // Call welcome function (make sure it exists)
+    
+    setTimeout(() => {
+      button.classList.remove('clicked'); // Remove 'clicked' after 700ms
+    }, 700);
+  });
+});
+
+
+
 loadContent();
 
 const postsContainer = document.getElementById('posts-container');
