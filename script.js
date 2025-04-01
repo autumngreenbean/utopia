@@ -13,21 +13,11 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 let model; 
-<<<<<<< Updated upstream
-new GLTFLoader().load('nail_charms_XD/scene.gltf', gltf => {
+new GLTFLoader().load('assets/avatars/cat_with_bows.glb', gltf => {
     model = gltf.scene;
 
-    model.scale.set(30, 30, 30);  
+    model.scale.set(100, 100, 100);  
     model.position.set(0, 0, 0); 
-=======
-new GLTFLoader().load('/assets/star.glb', gltf => {
-    model = gltf.scene;
-
-    // Set scale, position, and rotation for the model
-    model.scale.set(4, 4, 4);  
-    model.position.set(0, 0, 0); 
-    // model.rotateX(Math.PI / 7);
->>>>>>> Stashed changes
     
     // model.rotateX(Math.PI / 7);
         model.traverse(child => {
@@ -38,13 +28,13 @@ new GLTFLoader().load('/assets/star.glb', gltf => {
     scene.add(model);
 });
 
-camera.position.set(0, 100, 150); //x, y, z
+camera.position.set(0, 0, 150); //x, y, z
 camera.lookAt(0, 0, 0); 
 
 (function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    // model.rotation.z += 0.01; 
+    model.rotation.y += 0.01; 
 
 
 })();
