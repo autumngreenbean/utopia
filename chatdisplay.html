@@ -206,7 +206,7 @@ console.log("blog.js: 'I am called!'");
 
 
 
-fetch('https://script.google.com/macros/s/AKfycbyE6c7WaemKoaRX83-g0aW6pME6wntY0BHXyG_yGtbSg4Z1dtrdnox9AqCD0sopVqiTUw/exec')
+fetch('https://script.google.com/macros/s/AKfycbx-pUbOSXL8LRZO0Q_6Ro8otS9aHXHKkWdGQdEQtZUP4Us5rmBuI5GagNKigyfGjjoK/exec')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -265,9 +265,7 @@ function handleFormSubmit() {
             });
 
             if (response.ok) {
-                const postElement = document.createElement('div');
-                postElement.classList.add('post');
-
+                // add submitted post to current thing as a blogItem
                 postElement.innerHTML = `
                     <strong>${data.title}</strong> by ${data.author}: 
                     <span style="color:gray;">${data.message}</span><br>
