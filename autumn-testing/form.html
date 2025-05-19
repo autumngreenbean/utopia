@@ -1,0 +1,108 @@
+<style>
+    #form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      resize: horizontal;
+    }
+    #form-header {
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #minimize-btn {
+      background-color: transparent;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+
+    #form-content {
+      padding: 20px;
+      display: block;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0px;
+      display: inline-block;
+    }
+
+    input[type="text"], input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: border-color 1s ease, box-shadow 1s ease;
+    }
+
+    button {
+      padding: 8px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 1px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+</style>
+
+helloo world!
+
+<div id="form-container">
+    <div id="form-header">
+        <span id="form-title">Untitled by Unknown</span>
+        <button id="minimize-btn">-</button>
+    </div>
+    <form id="form-content">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required><br><br>
+  
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required><br><br>
+  
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea><br><br>
+  
+      <label for="month">Month:</label>
+      <input type="text" id="month" name="month" required><br><br>
+  
+      <label for="year">Year:</label>
+      <input type="text" id="year" name="year" required><br><br>
+  
+      <label for="date">Date:</label>
+      <input type="text" id="date" name="date" required><br><br>
+  
+      <button type="submit">Submit</button>
+  </form>
+  
+</div>
+
+<script type="module">
+    import { makeDraggable } from './makeDraggable.js';
+
+    window.onload = function() {
+        const formContainer = document.getElementById('form-container');
+        const formHeader = document.getElementById('form-header');
+        if (formContainer && formHeader) {
+            makeDraggable(formContainer, formHeader);
+        }
+    };
+</script>

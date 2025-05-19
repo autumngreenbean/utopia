@@ -1,0 +1,317 @@
+<head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&display=swap');
+.coral-pixels-regular {
+  font-family: "Coral", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ballet{
+  font-family: "Ballet", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    font-family: 'Ballet';
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    height: 200vh; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+      
+.ellipse {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%); 
+  width: 98vw;
+  height: 100vh;
+  background-color: transparent;
+  border: 1px dotted white;
+  border-radius: 50%;  
+  box-shadow:  0 0 150px 5px rgb(255, 82, 169, 0.3),
+  inset 0 0 15px 5px rgb(255, 191, 220);
+  z-index: -1;  
+}
+      
+
+  #header {
+    position: absolute; top: 50%; left: 45%; 
+    transform: translate(-50%, -50%); 
+    color: transparent; 
+    /* text-shadow: 0 0 10px rgb(255, 149, 202);  */
+
+    /* text-shadow:
+    1px 1px 10px rgba(255, 255, 255, 0.4),  
+   -1px -1px 10px rgba(255, 252, 252, 0.695),  
+    0 0 5px rgba(255, 112, 176, 0),
+    0 0 90px rgba(255, 14, 106, 0.682); */
+    
+    font-size:645px;
+        animation: glow-pulse3 10s ease-in-out infinite;;
+
+    /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
+
+  }
+
+  #subheader {
+    padding-left: 100%;
+    top: 60%;
+    display: inline-block;
+    position: absolute;     white-space: nowrap;
+    animation: scroll-left 30s linear infinite, glow-pulse 5s ease-in-out infinite;;
+    color: white; 
+    text-shadow:
+    1px 1px 5px rgba(255, 255, 255, 0.4),  
+   -1px -1px 5px rgba(255, 252, 252, 0.695),  
+    0 0 5px rgba(255, 112, 176, 0),
+    0 0 20px rgba(255, 14, 106, 0.682);
+    -webkit-text-stroke: .5px rgb(255, 255, 255);
+    font-size:55px;
+  
+  }
+
+  @keyframes glow-pulse {
+  0%, 100% {
+    text-shadow:
+      1px 1px 1px rgba(255, 255, 255, 0.4),
+     -1px -1px 1px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 10px rgba(255, 14, 106, 0.682); /* normal glow */
+  }
+  50% {
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.4),
+     -1px -1px 5px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 40px rgba(255, 14, 106, 1); /* brighter glow */
+  }
+}
+@keyframes glow-pulse2 {
+  0%, 20% {
+    color: rgba(255, 255, 255, 0); 
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.2),
+     -1px -1px 5px rgba(255, 252, 252, 0.2),
+      0 0 5px rgba(255, 112, 176, 0.2),
+      0 0 20px rgba(255, 14, 106, 0.2);
+  }
+
+  30% {
+    color: rgba(255, 255, 255, 0.5); /* visible */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.4),
+     -1px -1px 5px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 40px rgba(255, 14, 106, 1);
+  }
+
+  70% {
+    color: rgba(255, 255, 255, 0.5); /* still visible */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.4),
+     -1px -1px 5px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 40px rgba(255, 14, 106, 1);
+  }
+
+  90%, 100% {
+    color: rgba(255, 255, 255, 0); /* fade out & linger invisible */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.2),
+     -1px -1px 5px rgba(255, 252, 252, 0.2),
+      0 0 5px rgba(255, 112, 176, 0.2),
+      0 0 20px rgba(255, 14, 106, 0.2);
+  }
+}
+
+@keyframes glow-pulse3 {
+  0%, 10% {
+    color: rgba(255, 255, 255, 0.5); /* fully visible, linger */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.4),
+     -1px -1px 5px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 40px rgb(255, 149, 190);
+  }
+  
+  30%, 70% {
+    color: rgba(255, 255, 255, 0); /* invisible, linger */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.2),
+     -1px -1px 5px rgba(255, 252, 252, 0.2),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 20px rgba(255, 14, 106, 0.2);
+  }
+  
+  90%, 100% {
+    color: rgba(255, 255, 255, 0.5); /* fully visible, linger */
+    text-shadow:
+      1px 1px 5px rgba(255, 255, 255, 0.4),
+     -1px -1px 5px rgba(255, 252, 252, 0.695),
+      0 0 5px rgba(255, 112, 176, 0),
+      0 0 40px rgb(255, 149, 190);
+  }
+}
+  @keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+#subheader-2 {
+  position: absolute; top: 85%; left: 25%; 
+  transform: translate(-50%, -50%); 
+  color: transparent; 
+  text-shadow: 0 0 5px rgb(255, 255, 255); 
+  font-size:200px;
+  animation: glow-pulse2 10s ease-in-out infinite;;
+}
+#chat-container {
+  font-family: 'Coral Pixels', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  padding: 20px;
+  position: relative; /* Better than absolute for container */
+  top: 100vh; /* Reset top */
+}
+
+#chat-header {
+  font-size: 100px;
+  color: white;
+  margin-bottom: 20px; 
+  text-shadow:
+    1px 1px 5px #ffffff66,  
+    -1px -1px 5px rgba(255, 252, 252, 0.695),  
+    0 0 5px rgba(255, 112, 176, 0),
+    0 0 20px rgba(255, 14, 106, 0.682),
+    0 0 5px rgba(255, 14, 106, 0.682);
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+}
+
+#chat-display {
+  font-family: 'Coral Pixels', sans-serif;
+  padding-left: 100px;
+  background: rgba(255, 255, 255, 0.05); /* Optional background */
+  color: white;
+  width: 75%;
+  height: 40%;
+  overflow-y: auto;
+  /* background-color: blue; */
+}
+
+#chat-item-text {
+  font-family: 'Coral Pixels', sans-serif;
+  color: rgb(55, 1, 10);
+  font-size: 20px;
+}
+
+#content {
+   font-family: 'Coral Pixels', sans-serif;
+   text-shadow:
+    0 0 2px rgba(255, 14, 106, 0.682);
+}
+
+#footer {
+font-family: 'Coral Pixels', sans-serif;
+font-size: 15px;
+color: red; bottom: -110%; right:0; position: absolute
+}
+
+#chat-submitter {
+  margin-top: 60px;
+  font-family: 'Coral Pixels', sans-serif;
+  width: 50%;
+  height: 50px;
+  left: 20%;
+  position: absolute;
+  box-shadow:  0 0 150px 5px rgb(255, 82, 169, 0.3);
+  padding: 5px;
+}
+
+#messagebox {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  box-shadow: none;
+  resize: none;
+  caret-color: pink;
+  font-family: 'Coral Pixels', sans-serif;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="ellipse"></div>
+  <div id = "header">Utopia</div> 
+  <br><br><br>
+  <div id="subheader">Wondering, Dreaming, Manifesting.......</div>
+  <div id="subheader-2">Fall 2025</div>
+  <div class="ellipse" style = "top:160vh"></div>
+
+  <div id = "chat-container">
+    <div id = "chat-header">My Dream Journal </div>
+    <div id="chat-display"></div>
+    <div id="chat-submitter">message:
+      <div id="messagebox" contenteditable="true"></div>
+    </div>
+  </div>
+
+  <div id="footer"> website courtesy of signalkitten. project by simone badaruddin, autumn green, and eleanor randl </div>
+</body>
+     
+<script>
+  const chatContainer = document.getElementById('chat-display');
+      fetch('https://script.google.com/macros/s/AKfycbxRP_cgeCFzRUIcswuqVNfb9i6vJhJfJNQy0eSgeHL8qeJlLX41LYHAISqGz7Kewey7-Q/exec')
+
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+
+    .then(posts => {
+        posts.forEach(post => {
+          const { author, content} = post;
+          const chatItem = document.createElement('div');
+          chatItem.id = 'chat-item';
+          chatItem.innerHTML = `
+            <div id="chat-item-text">
+              <img src="assets/renders/cat_5-18-25.png" alt="avatar" style="height: auto; width: 30px; vertical-align: middle; margin-right: 5px;">
+              <span id="content">&lt;${author}&gt;: </span> ${content}
+            </div>
+          `;
+
+          chatItem.addEventListener('click', () => {
+            loadBlogContent(post);
+            document.querySelector('#blog #header .window-title').innerHTML = `<img src="icons/search-file.png" alt="" style="padding-top: 1px; width:20px; height: 20px; background-color: transparent; padding-right: 2px;">&nbsp;${year}/${month}/${date}`;
+          });
+
+          chatContainer.appendChild(chatItem);
+          loadedContent = true;
+        });
+      
+    })
+
+</script>
+    
