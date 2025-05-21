@@ -68,7 +68,7 @@ body {
     top: 60%;
     display: inline-block;
     position: absolute;     white-space: nowrap;
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 30s linear infinite, glow-pulse 5s ease-in-out infinite;;
     color: white; 
     text-shadow:
     1px 1px 5px rgba(255, 255, 255, 0.4),  
@@ -179,6 +179,64 @@ body {
   font-size:200px;
   animation: glow-pulse2 10s ease-in-out infinite;;
 }
+
+#info-selector {
+  font-family: 'Coral Pixels', sans-serif;
+  width: 20vw;
+  height: 45vh;
+  display: block;
+  padding: 20px;
+  position: absolute; 
+  top: 135vh; 
+  right:10vw;
+  outline-style: dotted;
+  outline-width: 2px;
+  outline-color: rgba(255, 192, 203, 0.205);
+   box-shadow:  0 0 150px 5px rgba(255, 82, 163, 0.411);
+  /* align-content: center; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 200px;
+}
+#avatar-display {
+  margin-top: 40px;
+  width: 100%;
+  height: 50%;
+
+  /* background-image: url("assets/renders/cat_5-18-25.png");  */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 150px 5px rgb(255, 82, 169, 0.3),
+    inset 0 0 15px 5px rgba(255, 191, 220, 0.593);
+
+  border-radius: 200px;
+}
+
+
+
+.butt {
+  margin-top: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: radial-gradient(circle, hotpink, transparent);
+  transition: transform 0.1s ease; /* Smooth rotation transition */
+
+  box-shadow:  0 0 10px 2px rgb(255, 82, 169, 0.3);
+}
+.butt:active {
+  transform: rotate(360deg); /* Rotate the button by 45 degrees on click */
+
+}
+
 #chat-container {
   font-family: 'Coral Pixels', sans-serif;
   width: 100vw;
@@ -207,7 +265,7 @@ body {
   padding-left: 100px;
   background: rgba(255, 255, 255, 0.05); /* Optional background */
   color: white;
-  width: 75%;
+  width: 65%;
   height: 40%;
   overflow-y: auto;
   /* background-color: blue; */
@@ -216,7 +274,7 @@ body {
 #chat-item-text {
   font-family: 'Coral Pixels', sans-serif;
   color: rgb(55, 1, 10);
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #content {
@@ -226,26 +284,45 @@ body {
 }
 
 #footer {
+  opacity: 50%;
 font-family: 'Coral Pixels', sans-serif;
-font-size: 15px;
-color: red; bottom: -110%; right:0; position: absolute
+font-size: 12px; bottom: -110%; right:0; position: absolute;
 }
 
 #chat-submitter {
   margin-top: 60px;
   font-family: 'Coral Pixels', sans-serif;
   width: 50%;
-  height: 50px;
+  height: 35px;
   left: 20%;
   position: absolute;
   box-shadow:  0 0 150px 5px rgb(255, 82, 169, 0.3);
   padding: 5px;
+    white-space: nowrap;
+  overflow: hidden;
+}
+
+#name-submitter {
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 10px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 200px;
+  font-family: 'Coral Pixels', sans-serif;
+  width: 40%;
+  height: 30px;
+  box-shadow:  0 0 150px 5px rgba(255, 82, 169, 0.441);
 }
 
 #messagebox {
   width: 100%;
   height: 40px;
-  font-size: 16px;
+  font-size: 15px;
   color: white;
   border: none;
   outline: none;
@@ -254,7 +331,76 @@ color: red; bottom: -110%; right:0; position: absolute
   resize: none;
   caret-color: pink;
   font-family: 'Coral Pixels', sans-serif;
+  opacity: 50%;
 }
+
+#namebox {
+  position: relative;
+  width: 100%;  
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  box-shadow: none;
+  resize: none;
+  caret-color: pink;
+  font-family: 'Coral Pixels', sans-serif;
+  opacity: 50%;
+}
+
+
+#message {
+  position: relative;
+  width: 100%;  
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  box-shadow: none;
+  resize: none;
+  caret-color: pink;
+  font-family: 'Coral Pixels', sans-serif;
+  opacity: 50%;
+}
+#chat-display::-webkit-scrollbar {
+  width: 10px;
+  /* box-shadow:  inset 0 0 1px rgba(251, 142, 224, 0.874),
+   0 0 13px rgba(255, 151, 227, 0.9);  */
+  border-radius: 200px;
+
+}
+
+#chat-display::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow:   0 0 150px 5px rgb(255, 82, 169, 0.3);
+
+  border-radius: 500px;
+}
+
+#chat-display::-webkit-scrollbar-thumb {
+  box-shadow:  
+   0 0 13px rgba(255, 151, 227, 0.9),
+   inset 0 0 1px rgba(251, 142, 224, 0.874);
+
+  background: white;
+
+  border-radius: 600px;
+}
+
+#chat-display::-webkit-scrollbar-thumb:hover {
+
+}
+
+
 
 
   </style>
@@ -269,17 +415,67 @@ color: red; bottom: -110%; right:0; position: absolute
   <div class="ellipse" style = "top:160vh"></div>
 
   <div id = "chat-container">
-    <div id = "chat-header">My Dream Journal </div>
+    <div id = "chat-header">My Dream Journal</div>
     <div id="chat-display"></div>
-    <div id="chat-submitter">message:
-      <div id="messagebox" contenteditable="true"></div>
-    </div>
+    
+    <div id="chat-submitter">
+      <img id = "avatar-img-small" src="assets/renders/cat_5-18-25.png" alt="avatar" style="height: auto; width: 30px; vertical-align: middle; margin-right: 5px;">
+      message:
+      <input type="text" id="message" maxlength="60">    </div>
   </div>
 
+  <div id = "info-selector">
+    <div id = "avatar-display">
+        <img id="avatar-img" src="assets/renders/cat_5-18-25.png" alt="Avatar">
+    </div>
+    <div id = "avatar-buttons">
+      <button class = "butt" onclick="updateAvatar()">
+          <img src="assets/magic-stick.svg" style="
+              filter: invert(1) sepia(1) saturate(100%) hue-rotate(190deg);
+              width:100%; height: 100%;" />
+      </button>
+    </div>
+      <span style = "font-size:12px; font-family: 'Coral Pixels';">my name is:</span>
+    <div id = "name-submitter">
+      <input type="text" id="namebox" maxlength="12">
+    </div>
+        
+      </div>
+      <!-- <img src="assets/renders/cat_5-18-25.png" alt=""> -->
   <div id="footer"> website courtesy of signalkitten. project by simone badaruddin, autumn green, and eleanor randl </div>
 </body>
      
 <script>
+let index = 0;
+updateAvatar();
+
+function updateAvatar() {
+  const avatarDisplay = document.getElementById('avatar-display');
+  const avatarDisplaySmall = document.getElementById('avatar-img-small');
+
+  const avatarImages = [
+    'assets/renders/cat_5-18-25.png',
+    'assets/renders/clood_5-20-25.png'
+  ];
+
+  avatarDisplay.style.backgroundImage = `url("${avatarImages[index]}")`;
+  avatarDisplaySmall.src = avatarImages[index];
+
+  console.log(`Avatar updated to: ${avatarImages[index]}`);
+
+  index = (index + 1) % avatarImages.length;
+}
+
+  const chatbox = document.getElementById("chat-submitter");
+
+  chatbox.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); 
+   }
+  });
+
+
+
   const chatContainer = document.getElementById('chat-display');
       fetch('https://script.google.com/macros/s/AKfycbxRP_cgeCFzRUIcswuqVNfb9i6vJhJfJNQy0eSgeHL8qeJlLX41LYHAISqGz7Kewey7-Q/exec')
 
