@@ -1,411 +1,6 @@
 <head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&display=swap');
-.coral-pixels-regular {
-  font-family: "Coral", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.ballet{
-  font-family: "Ballet", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-* {
-    margin: 0;
-    font-family: 'Ballet';
-    padding: 0;
-    box-sizing: border-box;
-}
-  
-body {
-    height: 200vh; 
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-      
-.ellipse {
-  position: absolute;
-  top: 50vh;
-  left: 50vw;
-  transform: translate(-50%, -50%); 
-  width: 98vw;
-  height: 100vh;
-  background-color: transparent;
-  border: 1px dotted white;
-  border-radius: 50%;  
-  box-shadow:  0 0 150px 5px rgb(255, 82, 169, 0.3),
-  inset 0 0 15px 5px rgb(255, 191, 220);
-  z-index: -1;  
-}
-      
-
-  #header {
-    position: absolute; top: 50%; left: 45%; 
-    transform: translate(-50%, -50%); 
-    color: transparent; 
-    /* text-shadow: 0 0 10px rgb(255, 149, 202);  */
-
-    /* text-shadow:
-    1px 1px 10px rgba(255, 255, 255, 0.4),  
-   -1px -1px 10px rgba(255, 252, 252, 0.695),  
-    0 0 5px rgba(255, 112, 176, 0),
-    0 0 90px rgba(255, 14, 106, 0.682); */
-    
-    font-size:645px;
-        animation: glow-pulse3 10s ease-in-out infinite;;
-
-    /* -webkit-text-stroke: 1px rgb(255, 255, 255); */
-
-  }
-
-  #subheader {
-    padding-left: 100%;
-    top: 60%;
-    display: inline-block;
-    position: absolute;     white-space: nowrap;
-    animation: scroll-left 30s linear infinite, glow-pulse 5s ease-in-out infinite;;
-    color: white; 
-    text-shadow:
-    1px 1px 5px rgba(255, 255, 255, 0.4),  
-   -1px -1px 5px rgba(255, 252, 252, 0.695),  
-    0 0 5px rgba(255, 112, 176, 0),
-    0 0 20px rgba(255, 14, 106, 0.682);
-    -webkit-text-stroke: .5px rgb(255, 255, 255);
-    font-size:55px;
-  
-  }
-
-  @keyframes glow-pulse {
-  0%, 100% {
-    text-shadow:
-      1px 1px 1px rgba(255, 255, 255, 0.4),
-     -1px -1px 1px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 10px rgba(255, 14, 106, 0.682); /* normal glow */
-  }
-  50% {
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.4),
-     -1px -1px 5px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 40px rgba(255, 14, 106, 1); /* brighter glow */
-  }
-}
-@keyframes glow-pulse2 {
-  0%, 20% {
-    color: rgba(255, 255, 255, 0); 
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.2),
-     -1px -1px 5px rgba(255, 252, 252, 0.2),
-      0 0 5px rgba(255, 112, 176, 0.2),
-      0 0 20px rgba(255, 14, 106, 0.2);
-  }
-
-  30% {
-    color: rgba(255, 255, 255, 0.5); /* visible */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.4),
-     -1px -1px 5px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 40px rgba(255, 14, 106, 1);
-  }
-
-  70% {
-    color: rgba(255, 255, 255, 0.5); /* still visible */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.4),
-     -1px -1px 5px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 40px rgba(255, 14, 106, 1);
-  }
-
-  90%, 100% {
-    color: rgba(255, 255, 255, 0); /* fade out & linger invisible */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.2),
-     -1px -1px 5px rgba(255, 252, 252, 0.2),
-      0 0 5px rgba(255, 112, 176, 0.2),
-      0 0 20px rgba(255, 14, 106, 0.2);
-  }
-}
-
-@keyframes glow-pulse3 {
-  0%, 10% {
-    color: rgba(255, 255, 255, 0.5); /* fully visible, linger */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.4),
-     -1px -1px 5px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 40px rgb(255, 149, 190);
-  }
-  
-  30%, 70% {
-    color: rgba(255, 255, 255, 0); /* invisible, linger */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.2),
-     -1px -1px 5px rgba(255, 252, 252, 0.2),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 20px rgba(255, 14, 106, 0.2);
-  }
-  
-  90%, 100% {
-    color: rgba(255, 255, 255, 0.5); /* fully visible, linger */
-    text-shadow:
-      1px 1px 5px rgba(255, 255, 255, 0.4),
-     -1px -1px 5px rgba(255, 252, 252, 0.695),
-      0 0 5px rgba(255, 112, 176, 0),
-      0 0 40px rgb(255, 149, 190);
-  }
-}
-  @keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-#subheader-2 {
-  position: absolute; top: 85%; left: 25%; 
-  transform: translate(-50%, -50%); 
-  color: transparent; 
-  text-shadow: 0 0 5px rgb(255, 255, 255); 
-  font-size:200px;
-  animation: glow-pulse2 10s ease-in-out infinite;;
-}
-
-#info-selector {
-  font-family: 'Coral Pixels', sans-serif;
-  width: 20vw;
-  height: 45vh;
-  display: block;
-  padding: 20px;
-  position: absolute; 
-  top: 135vh; 
-  right:10vw;
-  outline-style: dotted;
-  outline-width: 2px;
-  outline-color: rgba(255, 192, 203, 0.205);
-   box-shadow:  0 0 150px 5px rgba(255, 82, 163, 0.411);
-  /* align-content: center; */
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  border-radius: 200px;
-}
-#avatar-display {
-  margin-top: 40px;
-  width: 100%;
-  height: 50%;
-
-  /* background-image: url("assets/renders/cat_5-18-25.png");  */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.4),
-    0 0 150px 5px rgb(255, 82, 169, 0.3),
-    inset 0 0 15px 5px rgba(255, 191, 220, 0.593);
-
-  border-radius: 200px;
-}
-
-
-
-.butt {
-  margin-top: 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 25px;
-  height: 25px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  background: radial-gradient(circle, hotpink, transparent);
-  transition: transform 0.1s ease; /* Smooth rotation transition */
-
-  box-shadow:  0 0 10px 2px rgb(255, 82, 169, 0.3);
-}
-.butt:active {
-  transform: rotate(360deg); /* Rotate the button by 45 degrees on click */
-
-}
-
-#chat-container {
-  font-family: 'Coral Pixels', sans-serif;
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  padding: 20px;
-  position: relative; /* Better than absolute for container */
-  top: 100vh; /* Reset top */
-}
-
-#chat-header {
-  font-size: 100px;
-  color: white;
-  margin-bottom: 20px; 
-  text-shadow:
-    1px 1px 5px #ffffff66,  
-    -1px -1px 5px rgba(255, 252, 252, 0.695),  
-    0 0 5px rgba(255, 112, 176, 0),
-    0 0 20px rgba(255, 14, 106, 0.682),
-    0 0 5px rgba(255, 14, 106, 0.682);
-  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
-}
-
-#chat-display {
-  font-family: 'Coral Pixels', sans-serif;
-  padding-left: 100px;
-  background: rgba(255, 255, 255, 0.05); /* Optional background */
-  color: white;
-  width: 65%;
-  height: 40%;
-  overflow-y: auto;
-  /* background-color: blue; */
-}
-
-#chat-item-text {
-  font-family: 'Coral Pixels', sans-serif;
-  color: rgb(55, 1, 10);
-  font-size: 15px;
-}
-
-#content {
-   font-family: 'Coral Pixels', sans-serif;
-   text-shadow:
-    0 0 2px rgba(255, 14, 106, 0.682);
-}
-
-#footer {
-  opacity: 50%;
-font-family: 'Coral Pixels', sans-serif;
-font-size: 12px; bottom: -110%; right:0; position: absolute;
-}
-
-#chat-submitter {
-  margin-top: 60px;
-  font-family: 'Coral Pixels', sans-serif;
-  width: 50%;
-  height: 35px;
-  left: 20%;
-  position: absolute;
-  box-shadow:  0 0 150px 5px rgb(255, 82, 169, 0.3);
-  padding: 5px;
-    white-space: nowrap;
-  overflow: hidden;
-}
-
-#name-submitter {
-  display: inline-flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  margin-top: 10px;
-  font-size: 10px;
-  text-align: center;
-  border-radius: 200px;
-  font-family: 'Coral Pixels', sans-serif;
-  width: 40%;
-  height: 30px;
-  box-shadow:  0 0 150px 5px rgba(255, 82, 169, 0.441);
-}
-
-#messagebox {
-  width: 100%;
-  height: 40px;
-  font-size: 15px;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 5px 10px;
-  box-shadow: none;
-  resize: none;
-  caret-color: pink;
-  font-family: 'Coral Pixels', sans-serif;
-  opacity: 50%;
-}
-
-#namebox {
-  position: relative;
-  width: 100%;  
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 40px;
-  font-size: 15px;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 5px 10px;
-  box-shadow: none;
-  resize: none;
-  caret-color: pink;
-  font-family: 'Coral Pixels', sans-serif;
-  opacity: 50%;
-}
-
-
-#message {
-  position: relative;
-  width: 100%;  
-  width: 100%;
-  height: 40px;
-  font-size: 15px;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 5px 10px;
-  box-shadow: none;
-  resize: none;
-  caret-color: pink;
-  font-family: 'Coral Pixels', sans-serif;
-  opacity: 50%;
-}
-#chat-display::-webkit-scrollbar {
-  width: 10px;
-  /* box-shadow:  inset 0 0 1px rgba(251, 142, 224, 0.874),
-   0 0 13px rgba(255, 151, 227, 0.9);  */
-  border-radius: 200px;
-
-}
-
-#chat-display::-webkit-scrollbar-track {
-  background: transparent;
-  box-shadow:   0 0 150px 5px rgb(255, 82, 169, 0.3);
-
-  border-radius: 500px;
-}
-
-#chat-display::-webkit-scrollbar-thumb {
-  box-shadow:  
-   0 0 13px rgba(255, 151, 227, 0.9),
-   inset 0 0 1px rgba(251, 142, 224, 0.874);
-
-  background: white;
-
-  border-radius: 600px;
-}
-
-#chat-display::-webkit-scrollbar-thumb:hover {
-
-}
-
-
-
-
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <div class="ellipse"></div>
   <div id = "header">Utopia</div> 
@@ -413,35 +8,36 @@ font-size: 12px; bottom: -110%; right:0; position: absolute;
   <div id="subheader">Wondering, Dreaming, Manifesting.......</div>
   <div id="subheader-2">Fall 2025</div>
   <div class="ellipse" style = "top:160vh"></div>
-
   <div id = "chat-container">
-    <div id = "chat-header">My Dream Journal</div>
-    <div id="chat-display"></div>
-    
+  <div id = "chat-header">My Dream Journal</div>
+  <div id="chat-display"></div>
+
+<form id="form-content">
     <div id="chat-submitter">
       <img id = "avatar-img-small" src="assets/renders/cat_5-18-25.png" alt="avatar" style="height: auto; width: 30px; vertical-align: middle; margin-right: 5px;">
-      message:
-      <input type="text" id="message" maxlength="60">    </div>
+      message:             
+      <input type="text" id="message" name="message" maxlength="60" autocomplete="off">    
+    </div>
   </div>
 
-  <div id = "info-selector">
-    <div id = "avatar-display">
-    </div>
-    <div id = "avatar-buttons">
-      <button class = "butt" onclick="updateAvatar()">
+    <div id = "info-selector">
+      <div id = "avatar-display"></div>
+      <div id = "avatar-buttons">
+        <button class = "butt" onclick="updateAvatar()">
           <img src="assets/magic-stick.svg" style="
-              filter: invert(1) sepia(1) saturate(100%) hue-rotate(190deg);
-              width:100%; height: 100%;" />
-      </button>
-    </div>
-      <span style = "font-size:12px; font-family: 'Coral Pixels';">my name is:</span>
-    <div id = "name-submitter">
-      <input type="text" id="namebox" maxlength="12">
-    </div>
-        
+            filter: invert(1) sepia(1) saturate(100%) hue-rotate(190deg);
+            width:100%; height: 100%;">
+        </button>
       </div>
-      <!-- <img src="assets/renders/cat_5-18-25.png" alt=""> -->
-  <div id="footer"> website courtesy of signalkitten. project by simone badaruddin, autumn green, and eleanor randl </div>
+      
+      <span style = "font-size:12px; font-family: 'Coral Pixels';">my name is:</span><br>
+
+      <input type="text" id="name" name="name" maxlength="12" autocomplete="off">    
+      <br><br>
+      <button type="submit" id="submit">Done!</button>
+    </div>
+  </form>
+  <div id="footer"> website by signalkitten. <br> project authors: simone badaruddin, autumn jing, + eleanor randl </div>
 </body>
      
 <script>
@@ -451,7 +47,6 @@ updateAvatar();
 function updateAvatar() {
   const avatarDisplay = document.getElementById('avatar-display');
   const avatarDisplaySmall = document.getElementById('avatar-img-small');
-
   const avatarImages = [
     'assets/renders/cat_5-18-25.png',
     'assets/renders/clood_5-20-25.png'
@@ -465,48 +60,77 @@ function updateAvatar() {
   index = (index + 1) % avatarImages.length;
 }
 
-  const chatbox = document.getElementById("chat-submitter");
-
-  chatbox.addEventListener("keydown", function (e) {
+const chatbox = document.getElementById("chat-submitter");
+chatbox.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault(); 
-   }
+    }
+});
+
+const chatContainer = document.getElementById('chat-display');
+fetch('https://script.google.com/macros/s/AKfycbxRP_cgeCFzRUIcswuqVNfb9i6vJhJfJNQy0eSgeHL8qeJlLX41LYHAISqGz7Kewey7-Q/exec')
+
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+  return response.json();
+})
+
+.then(posts => {
+  posts.forEach(post => {
+    const { author, content} = post;
+    const chatItem = document.createElement('div');
+    chatItem.id = 'chat-item';
+    chatItem.innerHTML = `
+      <div id="chat-item-text">
+        <img src="assets/renders/cat_5-18-25.png" alt="avatar" style="height: auto; width: 30px; vertical-align: middle; margin-right: 5px;">
+        <span id="content">&lt;${author}&gt;: </span> ${content}
+      </div>
+    `;
+
+    chatItem.addEventListener('click', () => {
+      loadBlogContent(post);
+      document.querySelector('#blog #header .window-title').innerHTML = `<img src="icons/search-file.png" alt="" style="padding-top: 1px; width:20px; height: 20px; background-color: transparent; padding-right: 2px;">&nbsp;${year}/${month}/${date}`;
+    });
+
+    chatContainer.appendChild(chatItem);
+    loadedContent = true;
   });
+})
 
+  
+document.getElementById('form-content').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+  const data = {
+      author: formData.get('name'),
+      content: formData.get('message')
+  };
+  console.log("Form Data:", data);  
 
+  // const loadingElement = document.getElementById('submit-animation');
 
-  const chatContainer = document.getElementById('chat-display');
-      fetch('https://script.google.com/macros/s/AKfycbxRP_cgeCFzRUIcswuqVNfb9i6vJhJfJNQy0eSgeHL8qeJlLX41LYHAISqGz7Kewey7-Q/exec')
+  function startLoadingAnimation() {
+      //submitting animation here
+      //inject full submitting loadingElement overlay here w/ spinning animation gif of heart 
+  }
 
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-
-    .then(posts => {
-        posts.forEach(post => {
-          const { author, content} = post;
-          const chatItem = document.createElement('div');
-          chatItem.id = 'chat-item';
-          chatItem.innerHTML = `
-            <div id="chat-item-text">
-              <img src="assets/renders/cat_5-18-25.png" alt="avatar" style="height: auto; width: 30px; vertical-align: middle; margin-right: 5px;">
-              <span id="content">&lt;${author}&gt;: </span> ${content}
-            </div>
-          `;
-
-          chatItem.addEventListener('click', () => {
-            loadBlogContent(post);
-            document.querySelector('#blog #header .window-title').innerHTML = `<img src="icons/search-file.png" alt="" style="padding-top: 1px; width:20px; height: 20px; background-color: transparent; padding-right: 2px;">&nbsp;${year}/${month}/${date}`;
-          });
-
-          chatContainer.appendChild(chatItem);
-          loadedContent = true;
-        });
-      
-    })
-
+  startLoadingAnimation();
+  try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxRP_cgeCFzRUIcswuqVNfb9i6vJhJfJNQy0eSgeHL8qeJlLX41LYHAISqGz7Kewey7-Q/exec', { 
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams(data),
+      });
+      //loadingElement dissappears here, stop gif animation
+      const result = await response.text();  
+      console.log("Response from server:", result);  
+  } catch (error) {
+      console.error("Error submitting form:", error);  
+  }
+});
 </script>
     
